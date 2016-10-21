@@ -11,14 +11,17 @@ Shortcut:
 
 * https://git.io/travis-npm-publish
 
-[github-url]:[issues-url]l]l]rl]NSE.md
-[travis-url]: ht[issues-url]l]er
-[snyk-url]: https://[issues-url]l]vg
-[david-url]: h[issues-url]l]vg
-[install-img]: https://nodei.co/npm/travis-npm-publish.png?compact=true
-[downloads-img]: https://img.shields.io/npm/dt/travis-npm-publish.svg
-[license-img]: https://img.shields.io/npm/l/travis-npm-publish.svg
-[stats-url]: http://npm-stat.com/charts.html?package=travis-npm-publish
+[npm-url]: https://www.npmjs.com/package/travis-npm-publish
+[github-url]: https://github.com/rsp/travis-npm-publish
+[readme-url]: https://github.com/rsp/travis-npm-publish#readme
+[issues-url]: https://github.com/rsp/travis-npm-publish/issues
+[license-url]: https://github.com/rsp/travis-npm-publish/blob/master/LICENSE.md
+[travis-url]: https://travis-ci.org/rsp/travis-npm-publish
+[travis-img]: https://travis-ci.org/rsp/travis-npm-publish.svg?branch=master
+[snyk-url]: https://snyk.io/test/github/rsp/travis-npm-publish
+[snyk-img]: https://snyk.io/test/github/rsp/travis-npm-publish/badge.svg
+[david-url]: https://david-dm.org/rsp/travis-npm-publish
+[david-img]: https://david-dm.org/rsp/travis-npm-publish/status.svg
 [github-follow-url]: https://github.com/rsp
 [github-follow-img]: https://img.shields.io/github/followers/rsp.svg?style=social&label=Follow
 [twitter-follow-url]: https://twitter.com/intent/follow?screen_name=pocztarski
