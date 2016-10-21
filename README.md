@@ -33,7 +33,7 @@ Right now Travis has a built in way of publishing your modules on `npm` - see:
 
 But this script may be more convenient to use and easier to customize. You don't need to have the `travis` CLI tool installed and you don't need to rely on how Travis handles the deployment to `npm` by default.
 
-You can specify for which GitHub user the publishing is run, for which branch or for tagged releases, and the scripts make sure that the given tag matches the version from `package.json` and checks whether this version has already been published before trying to do it.
+You can specify for which GitHub user the publishing is run (though even without it no one anauthorized would not be able to publish your module - it's just to avoid errors in the logs), for which branch or for tagged releases, and the script makes sure that the given tag matches the version from `package.json` and checks whether this version has already been published before trying to do it.
 
 Usage
 -----
@@ -52,6 +52,19 @@ Specifying BRANCH make it active for all builds on that branch.
 
 Not specifying BRANCH or giving a special value of `tags` makes the script active for tagged builds, but only if the tag matches the version specified in `package.json`.
 
+Authorization
+-------------
+You need to set an environment variable in Travis called `NPM_AUTH` with a value of the line from your `~/.npmrc` that contains the authToken - this line looks like:
+
+````
+//registry.npmjs.org/:_authToken=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+````
+
+Note: `NPM_AUTH` must contain the entire line, not just the token.
+
+You set the variable in Travis in More options / Settings.
+Make sure you set "Display value in build log" to off and keep this value secret.
+
 Publishing
 ----------
 When the GitHub repo of your module is set up with Travis and the script is set up properly, then publishing a module is a matter of, for example:
@@ -66,6 +79,7 @@ The script will not try to publish the module to `npm` if:
 * one of the required commands is not present
 * the TRAVIS env var is not set (it's set automatically by Travis)
 * the build is a pull request
+* the build fails the tests
 * the NPM_AUTH is not set
 * the GitHub user doesn't match USER (if specified)
 * the branch doesn't match BRANCH (if specified and is other than "tags")
@@ -100,16 +114,6 @@ node_js: 4
 script: npm test
 after_success: "./travis-npm-publish USER BRANCH"
 ```
-
-You need to set an environment variable in Travis called `NPM_AUTH` with a value of the line from your `~/.npmrc` that contains the authToken - this line looks like:
-
-````
-//registry.npmjs.org/:_authToken=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-````
-
-Note: `NPM_AUTH` must contain the entire line, not just the token.
-
-You set the variable in Travis in More options / Settings. Make sure you set "Display value in build log" to off.
 
 Issues
 ------
