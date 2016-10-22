@@ -50,6 +50,7 @@ It needs to be started as `after_success` script in `.travis.yml` - optionally s
 ```
 
 Specifying USER make the script active only for this user's repository.
+USER may be either a GitHub username or organization name.
 
 Specifying BRANCH make it active for all builds on that branch.
 
