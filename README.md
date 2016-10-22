@@ -30,11 +30,11 @@ Shortcut:
 [stackexchange-url]: https://stackexchange.com/users/303952/rsp
 [stackexchange-img]: https://stackexchange.com/users/flair/303952.png
 
-Right now Travis has a built in way of publishing your modules on `npm` - see:
+Right now Travis has a built in way of publishing your modules on npm - see:
 
 * https://docs.travis-ci.com/user/deployment/npm/
 
-But this script may be more convenient to use and easier to customize. You don't need to have the `travis` CLI tool installed and you don't need to rely on how Travis handles the deployment to `npm` by default.
+But this script may be more convenient to use and easier to customize. You don't need to have the `travis` CLI tool installed and you don't need to rely on how Travis handles the deployment to npm by default.
 
 You can specify for which GitHub user the publishing is run (though even without it no one anauthorized would not be able to publish your module - it's just to avoid errors in the logs), for which branch or for tagged releases, and the script makes sure that the given tag matches the version from `package.json` and checks whether this version has already been published before trying to do it.
 
@@ -77,7 +77,7 @@ npm version patch
 git push origin master
 ```
 
-The script will not try to publish the module to `npm` if:
+The script will not try to publish the module to npm if:
 
 * one of the required commands is not present
 * the TRAVIS env var is not set (it's set automatically by Travis)
@@ -87,7 +87,9 @@ The script will not try to publish the module to `npm` if:
 * the GitHub user doesn't match USER (if specified)
 * the branch doesn't match BRANCH (if specified and is other than "tags")
 * the tagged version doesn't match the version in `package.json` (if using tagged releases)
-* the version specified in `package.json` has already been published on `npm`
+* the version specified in `package.json` has already been published on npm
+
+Of course the script will try but fail to upload the module to npm if the npm user authorized by the authorization token has no right to publish new versions of that module to npm. The USER command line argument is not needed for security, it's just a convenience so that the script will not try to publish the module in situations when it would fail anyway, or in situations where for example you want to publish only from the organization's repo or only by one of the npm collaborators.
 
 Examples
 --------
