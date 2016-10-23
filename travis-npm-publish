@@ -43,7 +43,7 @@ echo "Deployment of $n@$v"
 
 if [ "$branch" == "tags" ]; then
   [ -z "$TRAVIS_TAG" ] && tag="no tag" || tag="tag: $TRAVIS_TAG"
-  [ "TEST${TRAVIS_TAG//v/}" == $v ] || skip "for $tag"
+  [ "${TRAVIS_TAG//v/}" == $v ] || skip "for $tag"
 else
   [ "$TRAVIS_BRANCH" == "$branch" ] || skip "on branch $TRAVIS_BRANCH"
 fi
